@@ -21,3 +21,27 @@ int** generate(int numRows, int* returnSize, int** returnColumnSizes) {
     *returnColumnSizes = colSizes;
     return result;
 }
+
+#include <stdio.h>
+
+int main() {
+    int numRows;
+    int returnSize;
+    int* returnColumnSizes;
+
+    scanf("%d",&numRows);
+    
+    int** triangle = generate(numRows, &returnSize, &returnColumnSizes);
+    
+    for (int i = 0; i < returnSize; i++) {
+        for (int j = 0; j < returnColumnSizes[i]; j++) {
+            printf("%d ", triangle[i][j]);
+        }
+        printf("\n");
+        free(triangle[i]);
+    }
+
+    free(triangle);
+    free(returnColumnSizes);
+    return 0;
+}
